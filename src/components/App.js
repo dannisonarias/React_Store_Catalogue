@@ -1,11 +1,16 @@
 import React from 'react';
-import Nav from './Nav'
+import { connect } from 'react-redux';
+import Nav from './Nav';
 
-
-const App = () => (
+const App = props => (
   <div>
-    <Nav></Nav>
+    {console.log(props)}
+    <Nav />
   </div>
 );
 
-export default App;
+function mapStateToProps(state) {
+  return { state };
+}
+
+export default connect(mapStateToProps)(App);
