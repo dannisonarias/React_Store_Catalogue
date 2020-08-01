@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Nav from './Nav';
+import CoinsContainer from '../containers/Coins';
 
-const App = props => (
+const App = (props) => (
   <div>
-    {console.log(props)}
     <Nav />
+    <CoinsContainer />
   </div>
 );
 
