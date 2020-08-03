@@ -1,5 +1,8 @@
 export const FETCH_COIN = 'FETCH_COIN';
-export const FETCH_TOP_TEN_COINS = 'FETCH_TOP_TEN_COINS';
+export const FETCH_TOP_COINS = 'FETCH_TOP_COINS';
+export const RANKING = 'RANKING';
+export const PRICE = 'PRICE';
+export const ALL_TIME_HIGH = 'ALL_TIME_HIGH';
 
 const url = 'https://api.nomics.com/v1/currencies';
 const getCoins = () => dispatch => {
@@ -8,8 +11,8 @@ const getCoins = () => dispatch => {
     .then(resp => {
       if (resp) {
         dispatch({
-          type: FETCH_COIN,
-          payload: resp.slice(0, 100),
+          type: FETCH_TOP_COINS,
+          payload: resp.slice(0, 15),
         });
       }
     })

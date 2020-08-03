@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Container, Card } from 'semantic-ui-react';
 import CategoryMenu from '../components/CategoryMenu';
+import LoadingIcon from '../components/Loader';
 
 import CoinCard from '../components/CoinCard';
 import getCoins from '../actions/index';
@@ -21,8 +22,9 @@ class CoinsContainer extends Component {
   render() {
     const { coin } = this.props.state;
     if (coin.length <= 0) {
-      return null;
+      return (<LoadingIcon />);
     }
+
     return (
       <Container>
         <CategoryMenu />
