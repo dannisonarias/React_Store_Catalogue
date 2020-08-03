@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import Nav from './Nav';
 import CoinsContainer from '../containers/Coins';
-import getCoins from '../actions/index';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,9 +9,9 @@ class App extends React.Component {
     this.state = {};
   }
 
-  componentDidMount() {
-    this.props.getCoins();
-  }
+  // componentDidMount() {
+  //   this.props.getCoins();
+  // }
 
   render() {
     return (
@@ -27,8 +25,8 @@ class App extends React.Component {
 
 const mapStateToProps = state => ({ state });
 
-const mapDispatchToProps = dispatch => ({
-  getCoins: bindActionCreators(getCoins, dispatch),
-});
+// const mapDispatchToProps = dispatch => ({
+//   getCoins: bindActionCreators(getCoins, dispatch),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

@@ -6,11 +6,12 @@ const getCoins = () => dispatch => {
   fetch(`${url}/ticker?key=${process.env.REACT_APP_NOMICS_API_KEY}`, { mode: 'cors' })
     .then(response => response.json())
     .then(resp => {
-      dispatch({
-        type: FETCH_TOP_TEN_COINS,
-        payload: resp,
-      });
-      console.log('API call response:', resp);
+      if (resp) {
+        dispatch({
+          type: FETCH_COIN,
+          payload: resp.slice(0, 100),
+        });
+      }
     })
     .catch(err => {
       console.log('Error fetching data from nomics', err);
