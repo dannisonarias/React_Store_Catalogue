@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Container, Card } from 'semantic-ui-react';
+import CategoryMenu from '../components/CategoryMenu';
 
 import CoinCard from '../components/CoinCard';
 import getCoins from '../actions/index';
@@ -24,6 +25,7 @@ class CoinsContainer extends Component {
     }
     return (
       <Container>
+        <CategoryMenu />
         <Card.Group itemsPerRow={4}>
           <CoinCard coin={coin[0][0]} />
           <CoinCard coin={coin[0][1]} />
@@ -35,6 +37,8 @@ class CoinsContainer extends Component {
           <CoinCard coin={coin[0][7]} />
           <CoinCard coin={coin[0][8]} />
           <CoinCard coin={coin[0][9]} />
+          <CoinCard coin={coin[0][10]} />
+          <CoinCard coin={coin[0][11]} />
         </Card.Group>
       </Container>
     );
