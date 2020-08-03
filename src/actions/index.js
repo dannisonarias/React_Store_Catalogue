@@ -1,19 +1,20 @@
-import KEY from '../API/cred';
-
 export const FETCH_COIN = 'FETCH_COIN';
 export const FETCH_TOP_TEN_COINS = 'FETCH_TOP_TEN_COINS';
-const url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/';
-const API_ENDPOINT_TOP10 = `${url}listings/latest?limit=10&CMC_PRO_API_KEY=${KEY}`;
 
-const getTopTen = () => dispatch => {
-  fetch(API_ENDPOINT_TOP10, { mode: 'no-cors' })
-    .then(res => res.json())
-    .then(coins => {
+const url = 'https://api.nomics.com/v1/currencies';
+const getCoins = () => dispatch => {
+  fetch(`${url}/ticker?key=${process.env.REACT_APP_NOMICS_API_KEY}`, { mode: 'cors' })
+    .then(response => response.json())
+    .then(resp => {
       dispatch({
         type: FETCH_TOP_TEN_COINS,
-        payload: coins,
+        payload: resp,
       });
+      console.log('API call response:', resp);
+    })
+    .catch(err => {
+      console.log('Error fetching data from nomics', err);
     });
 };
 
-export default getTopTen;
+export default getCoins;

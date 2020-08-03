@@ -7,10 +7,12 @@ import { FETCH_COIN } from '../actions/index';
 export default function (state = [], action) {
   switch (action.type) {
     case FETCH_COIN: // handle the payload when you're in the case statement.
+      console.log('FETCH_COIN: ', action.payload.data);
       // never state.push() -- concat doesn't mutate existing state, it returns new state.
       // you could end up mutating shared state and then the function is NOT pure.
       return state.concat([action.payload.data[0]]);
     default:
+      console.log('default state: ', state);
       return state;
   }
   return state;
