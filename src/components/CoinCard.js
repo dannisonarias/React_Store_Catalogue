@@ -5,7 +5,7 @@ const Coin = props => {
   const { coin } = props;
   return (
     <Card>
-      <Image src={coin && coin.logo_url} wrapped ui={false} />
+      <img src={coin && coin.logo_url} height={150}/>
       <Card.Content>
         <Card.Header>{coin && coin.name}</Card.Header>
         <Card.Meta>
