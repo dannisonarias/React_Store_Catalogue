@@ -3,6 +3,8 @@ import { Menu } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import SORT_FILTER from '../actions/index';
 import { Icon } from 'semantic-ui-react';
+import DropDown from './DropDown';
+
 
 class CategoryMenu extends Component {
   constructor(props) {
@@ -39,8 +41,8 @@ class CategoryMenu extends Component {
           active={activeItem === 'PRICE'}
           onClick={this.handleItemClick}
         />
+        <DropDown />
       </Menu>
-
     );
   }
 }
