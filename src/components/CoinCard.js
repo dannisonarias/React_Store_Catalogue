@@ -3,8 +3,9 @@ import { Card, Icon, Image } from 'semantic-ui-react';
 
 const Coin = props => {
   const { coin } = props;
-  let rank = parseInt(coin.rank);
-  if (rank > 5) {
+  debugger;
+  let rank;
+  if (!coin.rank || parseInt(coin.rank) > 5) {
     rank = 5;
   }
 
@@ -18,7 +19,7 @@ const Coin = props => {
         </Card.Meta>
       </Card.Content>
       <Card.Content extra>
-        <Icon name="Popularity" />
+        <Icon name="user" />
         Popularity:
         {'⭐'.repeat([5 - rank + 1]).slice(0, 5)}
       </Card.Content>

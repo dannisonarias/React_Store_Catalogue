@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import CoinReducer from './coin';
-import TopTenCoins from './topTenCoins';
+import filter from './filter';
 
 const rootReducer = combineReducers({
   coin: CoinReducer,
-  topTen: TopTenCoins,
+  filter,
 });
 
 export default rootReducer;

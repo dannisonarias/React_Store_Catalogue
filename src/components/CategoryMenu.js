@@ -1,34 +1,41 @@
 import React, { Component } from 'react';
 import { Menu } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import SORT_FILTER from '../actions/index';
 
 class CategoryMenu extends Component {
   constructor(props) {
     super(props);
-    this.state = { activeItem: 'Ranking' };
+    this.state = {};
     this.handleItemClick = this.handleItemClick.bind(this);
   }
 
-  handleItemClick(e, { name }) { this.setState({ activeItem: name }); }
+  handleItemClick(e, { name }) {
+    this.props.dispatch({
+      type: name,
+    });
+  }
 
   render() {
-    const { activeItem } = this.state;
+    const { filter } = this.props;
+    const { activeItem } = filter;
 
     return (
       <Menu text>
         <Menu.Item header>Sort By</Menu.Item>
         <Menu.Item
-          name="Ranking"
-          active={activeItem === 'Ranking'}
+          name="RANK"
+          active={activeItem === 'RANK'}
           onClick={this.handleItemClick}
         />
         <Menu.Item
-          name="Price"
-          active={activeItem === 'Price'}
+          name="DESC_RANK"
+          active={activeItem === 'DESC_RANK'}
           onClick={this.handleItemClick}
         />
         <Menu.Item
-          name="All time high"
-          active={activeItem === 'All time high'}
+          name="PRICE"
+          active={activeItem === 'PRICE'}
           onClick={this.handleItemClick}
         />
       </Menu>
@@ -36,4 +43,6 @@ class CategoryMenu extends Component {
   }
 }
 
-export default CategoryMenu;
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(CategoryMenu);

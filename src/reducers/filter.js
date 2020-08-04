@@ -1,12 +1,18 @@
-import { RANKING, PRICE, ALL_TIME_HIGH } from '../actions/index';
+import { SORT_FILTER } from '../actions/index';
 
-const initialState = [];
+const initialState = { activeItem: 'RANK' };
 
-export default function (state = initialState, action) {
+const coins = (state = initialState, action) => {
   switch (action.type) {
-    case RANKING:
-      return action.payload;
+    case 'DESC_RANK':
+      return { ...state, activeItem: 'DESC_RANK' };
+    case 'RANK':
+      return { ...state, activeItem: 'RANK' };
+    case 'PRICE':
+      return { ...state, activeItem: 'PRICE' };
     default:
       return state;
   }
-}
+};
+
+export default coins;
