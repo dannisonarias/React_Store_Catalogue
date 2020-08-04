@@ -20,6 +20,7 @@ class CoinsContainer extends Component {
 
   render() {
     const { coin } = this.props.state;
+    const { activeItem } = this.props.state.filter;
     let sortedCoins;
     if (coin.length <= 0) {
       return (<LoadingIcon />);
@@ -33,18 +34,22 @@ class CoinsContainer extends Component {
       return sortedCoins;
     };
 
-    const filterByHigh = () => {
+    const ascRank = () => coin[0];
 
+    const filterByPrice = () => {
+      sortedCoins = [...coin[0]];
+      sortedCoins.sort((a, b) => a.price - b.price);
+      return sortedCoins;
     };
 
-    if (this.props.state.filter.activeItem === 'DESC_RANK') {
-      sortedCoins = descRank();
-    } else if (this.props.state.filter.activeItem === 'PRICE') {
-      sortedCoins = filterByHigh();
+    if (activeItem === 'ASC_RANK') {
+      sortedCoins = ascRank(); // default
+    } else if (activeItem === 'PRICE') {
+      sortedCoins = filterByPrice();
     } else {
-      sortedCoins = coin[0];
+      sortedCoins = descRank();//
     }
-    //  this.props.state.filer.activeItem = "DESC_RANK" NOW FILTER the components =>
+    //  this.props.state.filer.activeItem = "ASC_RANK" NOW FILTER the components =>
     return (
       <Container>
         <CategoryMenu />

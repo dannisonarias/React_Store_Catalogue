@@ -3,10 +3,11 @@ import { Card, Icon, Image } from 'semantic-ui-react';
 
 const Coin = props => {
   const { coin } = props;
-  debugger;
   let rank;
   if (!coin.rank || parseInt(coin.rank) > 5) {
     rank = 5;
+  } else {
+    rank = parseInt(coin.rank);
   }
 
   return (

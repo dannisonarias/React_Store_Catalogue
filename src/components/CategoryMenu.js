@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Menu } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import SORT_FILTER from '../actions/index';
+import { Icon } from 'semantic-ui-react';
 
 class CategoryMenu extends Component {
   constructor(props) {
@@ -24,13 +25,13 @@ class CategoryMenu extends Component {
       <Menu text>
         <Menu.Item header>Sort By</Menu.Item>
         <Menu.Item
-          name="RANK"
-          active={activeItem === 'RANK'}
+          name="DESC_RANK"
+          active={activeItem === 'DESC_RANK'}
           onClick={this.handleItemClick}
         />
         <Menu.Item
-          name="DESC_RANK"
-          active={activeItem === 'DESC_RANK'}
+          name="ASC_RANK"
+          active={activeItem === 'ASC_RANK'}
           onClick={this.handleItemClick}
         />
         <Menu.Item
@@ -39,6 +40,7 @@ class CategoryMenu extends Component {
           onClick={this.handleItemClick}
         />
       </Menu>
+
     );
   }
 }

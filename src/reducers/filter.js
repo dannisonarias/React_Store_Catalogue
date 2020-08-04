@@ -1,13 +1,13 @@
 import { SORT_FILTER } from '../actions/index';
 
-const initialState = { activeItem: 'RANK' };
+const initialState = { activeItem: 'DESC_RANK' };
 
 const coins = (state = initialState, action) => {
   switch (action.type) {
+    case 'ASC_RANK':
+      return { ...state, activeItem: 'ASC_RANK' };
     case 'DESC_RANK':
       return { ...state, activeItem: 'DESC_RANK' };
-    case 'RANK':
-      return { ...state, activeItem: 'RANK' };
     case 'PRICE':
       return { ...state, activeItem: 'PRICE' };
     default:
