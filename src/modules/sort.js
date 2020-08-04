@@ -7,7 +7,6 @@ const sort = (coin, activeItem) => {
     }
     return sortedCoins;
   };
-
   const ascRank = () => coin[0];
 
   const filterByPrice = () => {
@@ -24,7 +23,7 @@ const sort = (coin, activeItem) => {
       sortedCoins = filterByPrice();
       return sortedCoins;
     }
-    sortedCoins = descRank();//
+    sortedCoins = descRank();
     return sortedCoins;
   };
 
