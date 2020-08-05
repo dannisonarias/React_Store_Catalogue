@@ -20,11 +20,13 @@ class CoinsContainer extends Component {
   }
 
   render() {
-    const { coin } = this.props.state;
+    let { coin } = this.props.state;
     const { activeItem } = this.props.state.filter;
     if (coin.length <= 0) {
       return (<LoadingIcon />);
     }
+    // coin is an array of two arrays containing coin stacks by rank
+    coin = coin[0][0];
     const sortedCoins = sort(coin, activeItem);
     return (
       <Container>

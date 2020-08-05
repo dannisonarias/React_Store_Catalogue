@@ -2,15 +2,15 @@ const sort = (coin, activeItem) => {
   let sortedCoins;
   const descRank = () => {
     const sortedCoins = [];
-    for (let i = coin[0].length - 1; i >= 0; i -= 1) {
-      sortedCoins.push(coin[0][i]);
+    for (let i = coin.length - 1; i >= 0; i -= 1) {
+      sortedCoins.push(coin[i]);
     }
     return sortedCoins;
   };
-  const ascRank = () => coin[0];
+  const ascRank = () => coin;
 
   const filterByPrice = () => {
-    sortedCoins = [...coin[0]];
+    sortedCoins = [...coin];
     sortedCoins.sort((a, b) => a.price - b.price);
     return sortedCoins;
   };

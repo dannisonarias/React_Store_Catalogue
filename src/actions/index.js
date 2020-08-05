@@ -10,7 +10,7 @@ const getCoins = () => dispatch => {
       if (resp) {
         dispatch({
           type: FETCH_TOP_COINS,
-          payload: resp.slice(0, 12),
+          payload: [resp.slice(0, 12), resp.slice(87, 99)],
         });
       }
     })

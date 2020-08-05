@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Dropdown, Menu } from 'semantic-ui-react';
 
 const options = [
@@ -6,10 +6,22 @@ const options = [
   { key: 2, text: 'Unfavorable', value: 2 },
 ];
 
-const DropDownMenu = () => (
-  <Menu compact>
-    <Dropdown placeholder="Category" options={options} selection />
-  </Menu>
-);
+class DropDownMenu extends Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+  }
+
+  render() {
+    return (
+      <Menu compact>
+        <Dropdown placeholder="Category" onChange={this.handleChange} options={options} selection />
+      </Menu>
+    );
+  }
+}
 
 export default DropDownMenu;
