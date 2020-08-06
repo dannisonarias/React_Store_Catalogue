@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Dropdown, Menu } from 'semantic-ui-react';
 
 const options = [
-  { key: 1, text: 'Favorable', value: 1 },
-  { key: 2, text: 'Unfavorable', value: 2 },
+  { key: 1, text: 'Actively Traded', value: 1 },
+  { key: 2, text: 'Dead Coins', value: 2 },
 ];
 
 class DropDownMenu extends Component {
@@ -13,6 +14,11 @@ class DropDownMenu extends Component {
   }
 
   handleChange(e) {
+    // eslint-disable-next-line react/destructuring-assignment
+    this.props.dispatch({
+      type: 'TOGGLE_CATEGORY',
+      payload: e.target.innerText,
+    });
   }
 
   render() {
@@ -24,4 +30,6 @@ class DropDownMenu extends Component {
   }
 }
 
-export default DropDownMenu;
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(DropDownMenu);

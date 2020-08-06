@@ -10,7 +10,8 @@ const getCoins = () => dispatch => {
       if (resp) {
         dispatch({
           type: FETCH_TOP_COINS,
-          payload: [resp.slice(0, 12), resp.slice(87, 99)],
+          // selecting top coins and worst coins
+          payload: [resp.slice(0, 12), resp.slice(resp.length - 13, resp.length - 1)],
         });
       }
     })

@@ -26,7 +26,7 @@ class CoinsContainer extends Component {
       return (<LoadingIcon />);
     }
     // coin is an array of two arrays containing coin stacks by rank
-    coin = coin[0][0];
+    coin = coin[0][1];
     const sortedCoins = sort(coin, activeItem);
     return (
       <Container>

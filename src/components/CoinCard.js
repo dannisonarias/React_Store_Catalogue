@@ -9,6 +9,7 @@ const Coin = props => {
   } else {
     rank = parseInt(coin.rank);
   }
+  coin.logo_url = (!coin.logo_url === '') ? coin.logo_url : `/assets/images/no-image.jpg`;
 
   return (
     <Card>
