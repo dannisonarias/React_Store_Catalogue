@@ -1,6 +1,9 @@
 export const FETCH_COIN = 'FETCH_COIN';
 export const FETCH_TOP_COINS = 'FETCH_TOP_COINS';
-export const SORT_FILTER = 'SORT_FILTER';
+export const TOGGLE_CATEGORY = 'TOGGLE_CATEGORY';
+export const ASC_RANK = 'ASC_RANK';
+export const DESC_RANK = 'DESC_RANK';
+export const PRICE = 'PRICE';
 
 const url = 'https://api.nomics.com/v1/currencies';
 const getCoins = () => dispatch => {
@@ -10,8 +13,8 @@ const getCoins = () => dispatch => {
       if (resp) {
         dispatch({
           type: FETCH_TOP_COINS,
-          // selecting top coins and worst coins
-          payload: [resp.slice(0, 12), resp.slice(resp.length - 13, resp.length - 1)],
+          // select first 12 and last 12 coins
+          payload: [resp.slice(0, 12), resp.slice(resp.length - 13, resp.length)],
         });
       }
     })
