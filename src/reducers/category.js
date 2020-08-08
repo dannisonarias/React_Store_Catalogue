@@ -1,15 +1,13 @@
 import { TOGGLE_CATEGORY } from '../actions/index';
 
-const initialState = { category: 'Actively Traded' };
+const initialState = 'Actively Traded';
 
 const coins = (state = initialState, action) => {
   switch (action.type) {
-    case 'ASC_RANK':
-      return { ...state, activeItem: 'ASC_RANK' };
-    case 'DESC_RANK':
-      return { ...state, activeItem: 'DESC_RANK' };
-    case 'PRICE':
-      return { ...state, activeItem: 'PRICE' };
+    case TOGGLE_CATEGORY: {
+      const selected = (action.payload === 'Actively Traded' ? 'Actively Traded' : 'Dead Coins');
+      return selected;
+    }
     default:
       return state;
   }

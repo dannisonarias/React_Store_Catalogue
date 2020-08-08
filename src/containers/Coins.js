@@ -8,6 +8,7 @@ import LoadingIcon from '../components/Loader';
 import CoinCard from '../components/CoinCard';
 import getCoins from '../actions/index';
 import sort from '../modules/sort';
+import coins from '../actions/index';
 
 class CoinsContainer extends Component {
   constructor(props) {
@@ -15,18 +16,21 @@ class CoinsContainer extends Component {
     this.state = {};
   }
 
+
   componentDidMount() {
-    this.props.getCoins();
+    const { getCoins } = this.props;
+    getCoins();
   }
 
   render() {
-    let { coin } = this.props.state;
+    let { coin, category } = this.props.state;
     const { activeItem } = this.props.state.filter;
     if (coin.length <= 0) {
       return (<LoadingIcon />);
     }
-    // coin is an array of two arrays containing coin stacks by rank
-    coin = coin[0][1];
+
+    coin = ((category === 'Actively Traded') ? coin[0][0] : coin[0][1]);
+
     const sortedCoins = sort(coin, activeItem);
     return (
       <Container>
