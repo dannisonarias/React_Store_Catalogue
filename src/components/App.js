@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Nav from './Nav';
 import CoinsContainer from '../containers/Coins';
+import Footer from './Footer/Footer';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class App extends React.Component {
       <div>
         <Nav />
         <CoinsContainer />
+        <Footer />
       </div>
     );
   }
