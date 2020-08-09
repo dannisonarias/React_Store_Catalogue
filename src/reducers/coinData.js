@@ -1,6 +1,6 @@
 import { FETCH_COIN_DATA, FETCH_COIN_FAILURE, FETCH_COIN_SUCCESS } from '../actions/index';
 
-const initialState = { loading: true, coinData: [], error: '' };
+const initialState = { loading: true, coinData: null, error: '' };
 
 const coinData = (state = initialState, action) => {
   switch (action.type) {
