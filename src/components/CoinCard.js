@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react';
+import { Card, Icon } from 'semantic-ui-react';
+import CoinModal from './CoinModal';
 
 class Coin extends React.Component {
   constructor(props) {
@@ -9,7 +10,10 @@ class Coin extends React.Component {
   }
 
   handleClick(e) {
-    const uiCard = e.target.closest('.ui .card').id;
+    ;
+    console.log("Coin -> handleClick -> e", e.target)
+    // if (!e.target.closest('.ui .card')){return}
+    // const uiCard = e.target.closest('.ui .card').id;
   }
 
   setStars(coin) {
@@ -22,7 +26,7 @@ class Coin extends React.Component {
     return stars;
   }
 
-  setDefaultLogo(coin){
+  setDefaultLogo(coin) {
     return (!coin.logo_url == '') ? coin.logo_url : '/assets/images/no-image.jpg';
   }
 
@@ -30,9 +34,9 @@ class Coin extends React.Component {
     const { coin } = this.props;
     const rank = this.setStars(coin);
     coin.logo_url = this.setDefaultLogo(coin);
-
     return (
-      <Card onClick={this.handleClick} id={coin.symbol}>
+      <Card>
+        <CoinModal coinSymbol={coin.symbol} />
         <img src={coin && coin.logo_url} height={150} alt="Coin Logo" />
         <Card.Content>
           <Card.Header>{coin && coin.name}</Card.Header>

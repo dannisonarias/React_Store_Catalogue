@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dropdown, Menu } from 'semantic-ui-react';
-import { TOGGLE_CATEGORY } from '../actions/index';
+import { selectCategory } from '../actions/index';
 
 const options = [
   { key: 1, text: 'Actively Traded', value: 1 },
@@ -16,10 +16,7 @@ class DropDownMenu extends Component {
 
   handleChange(e) {
     // eslint-disable-next-line react/destructuring-assignment
-    this.props.dispatch({
-      type: TOGGLE_CATEGORY,
-      payload: e.target.innerText,
-    });
+    this.props.dispatch(selectCategory(e.target.innerText));
   }
 
   render() {

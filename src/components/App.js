@@ -9,10 +9,6 @@ class App extends React.Component {
     this.state = {};
   }
 
-  // componentDidMount() {
-  //   this.props.getCoins();
-  // }
-
   render() {
     return (
       <div>
@@ -24,9 +20,5 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({ state });
-
-// const mapDispatchToProps = dispatch => ({
-//   getCoins: bindActionCreators(getCoins, dispatch),
-// });
 
 export default connect(mapStateToProps)(App);

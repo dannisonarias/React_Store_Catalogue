@@ -8,7 +8,6 @@ import LoadingIcon from '../components/Loader';
 import CoinCard from '../components/CoinCard';
 import getCoins from '../actions/index';
 import sort from '../modules/sort';
-import coins from '../actions/index';
 
 class CoinsContainer extends Component {
   constructor(props) {
