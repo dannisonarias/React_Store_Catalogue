@@ -1,18 +1,22 @@
-import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { Menu } from 'semantic-ui-react';
 
-export default class MenuBasic extends Component {
-  state = {}
+class MenuBasic extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.handleItemClick = this.handleItemClick.bind(this);
+  }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleItemClick(e, { name }) { this.setState({ activeItem: name }); }
 
   render() {
-    const { activeItem } = this.state
+    const { activeItem } = this.state;
 
     return (
       <Menu>
         <Menu.Item
-          name='editorials'
+          name="editorials"
           active={activeItem === 'editorials'}
           onClick={this.handleItemClick}
         >
@@ -20,7 +24,7 @@ export default class MenuBasic extends Component {
         </Menu.Item>
 
         <Menu.Item
-          name='reviews'
+          name="reviews"
           active={activeItem === 'reviews'}
           onClick={this.handleItemClick}
         >
@@ -28,13 +32,15 @@ export default class MenuBasic extends Component {
         </Menu.Item>
 
         <Menu.Item
-          name='upcomingEvents'
+          name="upcomingEvents"
           active={activeItem === 'upcomingEvents'}
           onClick={this.handleItemClick}
         >
           Upcoming Events
         </Menu.Item>
       </Menu>
-    )
+    );
   }
 }
+
+export default MenuBasic;
