@@ -1,4 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
@@ -22,7 +24,8 @@ class CoinModal extends React.Component {
   render() {
     const { open } = this.state;
     const { coinSymbol } = this.props;
-    const { coinData } = this.props.state.coinData;
+    const { state } = this.props;
+    const { coinData } = state.coinData;
 
     if (!coinData) {
       return (
@@ -124,5 +127,11 @@ const mapStateToProps = state => ({ state });
 const mapDispatchToProps = dispatch => ({
   getCoinData: bindActionCreators(getCoinData, dispatch),
 });
+
+CoinModal.propTypes = {
+  getCoinData: PropTypes.string.isRequired,
+  coinSymbol: PropTypes.string.isRequired,
+  coinData: PropTypes.string.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoinModal);

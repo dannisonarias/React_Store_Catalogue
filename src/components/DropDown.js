@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dropdown, Menu } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import { selectCategory } from '../actions/index';
 
 const options = [
@@ -27,6 +28,10 @@ class DropDownMenu extends Component {
     );
   }
 }
+
+DropDownMenu.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => state;
 

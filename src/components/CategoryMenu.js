@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Menu } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import SORT_FILTER from '../actions/index';
-import { Icon } from 'semantic-ui-react';
-import DropDown from './DropDown';
+import PropTypes from 'prop-types';
 
+import DropDown from './DropDown';
 
 class CategoryMenu extends Component {
   constructor(props) {
@@ -14,6 +13,7 @@ class CategoryMenu extends Component {
   }
 
   handleItemClick(e, { name }) {
+    // eslint-disable-next-line react/destructuring-assignment
     this.props.dispatch({
       type: name,
     });
@@ -46,6 +46,12 @@ class CategoryMenu extends Component {
     );
   }
 }
+
+CategoryMenu.propTypes = {
+  filter: PropTypes.string.isRequired,
+  activeItem: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => state;
 

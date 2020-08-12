@@ -30,14 +30,12 @@ const fetchCoinFailure = error => ({
 
 const url = 'https://api.nomics.com/v1/currencies';
 
-export const getCoinData = symbol => {
-  return dispatch => {
-    dispatch(fetchCoinData());
-    fetch(`${url}/ticker?key=${process.env.REACT_APP_NOMICS_API_KEY}&ids=${symbol}`, { mode: 'cors' })
-      .then(res => res.json())
-      .then(response => dispatch(fetchCoinSuccess((response))))
-      .catch(error => dispatch(fetchCoinFailure(error)));
-  };
+export const getCoinData = symbol => dispatch => {
+  dispatch(fetchCoinData());
+  fetch(`${url}/ticker?key=${process.env.REACT_APP_NOMICS_API_KEY}&ids=${symbol}`, { mode: 'cors' })
+    .then(res => res.json())
+    .then(response => dispatch(fetchCoinSuccess((response))))
+    .catch(error => dispatch(fetchCoinFailure(error)));
 };
 
 const getCoins = () => dispatch => {
@@ -53,6 +51,7 @@ const getCoins = () => dispatch => {
       }
     })
     .catch(err => {
+      // eslint-disable-next-line no-console
       console.log('Error fetching data from nomics', err);
     });
 };

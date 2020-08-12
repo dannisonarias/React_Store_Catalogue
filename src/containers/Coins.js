@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Container, Card } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import CategoryMenu from '../components/CategoryMenu';
 import LoadingIcon from '../components/Loader';
 import CoinCard from '../components/CoinCard';
@@ -15,15 +16,17 @@ class CoinsContainer extends Component {
     this.state = {};
   }
 
-
   componentDidMount() {
     const { getCoins } = this.props;
     getCoins();
   }
 
   render() {
-    let { coin, category } = this.props.state;
-    const { activeItem } = this.props.state.filter;
+    const { state } = this.props;
+    let { coin } = state;
+    const { category } = state;
+    const { filter } = state;
+    const { activeItem } = filter;
     if (coin.length <= 0) {
       return (<LoadingIcon />);
     }
@@ -52,6 +55,14 @@ class CoinsContainer extends Component {
     );
   }
 }
+
+CoinsContainer.propTypes = {
+  getCoins: PropTypes.string.isRequired,
+  coin: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  state: PropTypes.string.isRequired,
+  filter: PropTypes.string.isRequired,
+};
 
 const mapStateToProps = state => ({ state });
 
