@@ -1,8 +1,9 @@
 # Catalogue single page application
 This project is a semi completed store based on a catalogue of products. The purpose of this project is to demonstrate the use of React and Redux to build a  a catalogue, that is, a browsable list of items that you can filter and access to by details.
 
-# Application live link
-[Heroku-Hosted_LIVE]()
+# Screen record (gif)
+
+![Screen recording](./captured.gif)
 
 ## Setup
 
