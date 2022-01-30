@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Card, Icon } from 'semantic-ui-react';
-import CoinModal from './CoinModal';
+import React from "react";
+import PropTypes from "prop-types";
+import { Card, Icon } from "semantic-ui-react";
+import CoinModal from "./CoinModal";
 
-const Coin = props => {
-  const setStars = coin => {
+const Coin = (props) => {
+  const setStars = (coin) => {
     let stars;
     // eslint-disable-next-line radix
     if (!coin.rank || parseInt(coin.rank) > 5) {
@@ -16,10 +16,16 @@ const Coin = props => {
     return stars;
   };
 
-  // eslint-disable-next-line eqeqeq
-  const setDefaultLogo = coin => ((!coin.logo_url == '') ? coin.logo_url : '/assets/images/no-image.jpg');
-
   const { coin } = props;
+  coin.logo_url = `/assets/images/icons/${coin.symbol.toLowerCase()}.svg`;
+  // coin.logo_url = `/assets/images/icons/btc.svg`;
+  if (coin.logo_url.width < 1) {
+    coin.logo_url = "";
+  }
+  debugger;
+  const setDefaultLogo = (coin) =>
+    // eslint-disable-next-line eqeqeq
+    !coin.logo_url == "" ? coin.logo_url : "/assets/images/no-image.jpg";
   const rank = setStars(coin);
   coin.logo_url = setDefaultLogo(coin);
   return (
@@ -28,14 +34,12 @@ const Coin = props => {
       <img src={coin && coin.logo_url} height={150} alt="Coin Logo" />
       <Card.Content>
         <Card.Header>{coin && coin.name}</Card.Header>
-        <Card.Meta>
-          {coin && coin.symbol}
-        </Card.Meta>
+        <Card.Meta>{coin && coin.symbol}</Card.Meta>
       </Card.Content>
       <Card.Content extra>
         <Icon name="user" />
         Popularity:
-        {'⭐'.repeat([5 - rank + 1]).slice(0, 5)}
+        {"⭐".repeat([5 - rank + 1]).slice(0, 5)}
       </Card.Content>
     </Card>
   );
