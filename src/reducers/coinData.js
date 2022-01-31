@@ -1,6 +1,10 @@
-import { FETCH_COIN_DATA, FETCH_COIN_FAILURE, FETCH_COIN_SUCCESS } from '../actions/index';
+import {
+  FETCH_COIN_DATA,
+  FETCH_COIN_FAILURE,
+  FETCH_COIN_SUCCESS,
+} from "../actions/index";
 
-const initialState = { loading: true, coinData: null, error: '' };
+const initialState = { loading: true, coinData: null, error: "" };
 
 const coinData = (state = initialState, action) => {
   switch (action.type) {
@@ -10,7 +14,9 @@ const coinData = (state = initialState, action) => {
       return { users: [], loading: false, error: action.payload };
     case FETCH_COIN_SUCCESS:
       return {
-        loading: false, coinData: action.payload, error: '',
+        loading: false,
+        coinData: action.payload,
+        error: "",
       };
     default:
       return state;

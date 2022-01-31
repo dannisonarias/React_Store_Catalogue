@@ -1,3 +1,4 @@
+import KEY from "../API/cred.js";
 export const FETCH_COIN = "FETCH_COIN";
 export const FETCH_TOP_COINS = "FETCH_TOP_COINS";
 export const TOGGLE_CATEGORY = "TOGGLE_CATEGORY";
@@ -7,7 +8,6 @@ export const PRICE = "PRICE";
 export const FETCH_COIN_DATA = "FETCH_COIN_DATA";
 export const FETCH_COIN_FAILURE = "FETCH_COIN_FAILURE";
 export const FETCH_COIN_SUCCESS = "FETCH_COIN_SUCCESS";
-
 // action creators
 export const selectCategory = (category) => ({
   type: TOGGLE_CATEGORY,
@@ -32,19 +32,16 @@ const url = "https://coinlib.io/api/v1";
 
 export const getCoinData = (symbol) => (dispatch) => {
   dispatch(fetchCoinData());
-  fetch(
-    `${url}/coin?key=${process.env.REACT_APP_COINLIB_API_KEY}&symbol=${symbol}`,
-    { mode: "cors" }
-  )
+  fetch(`${url}/coin?key=${KEY}&symbol=${symbol}`, { mode: "cors" })
     .then((res) => res.json())
-    .then((response) => dispatch(fetchCoinSuccess(response)))
+    .then((response) => {
+      dispatch(fetchCoinSuccess(response));
+    })
     .catch((error) => dispatch(fetchCoinFailure(error)));
 };
 
-const key = "2c5a9e61cd723be8";
-
 const getCoins = () => (dispatch) => {
-  fetch(`${url}/coinlist?key=${key}`, {
+  fetch(`${url}/coinlist?key=${KEY}`, {
     mode: "cors",
   })
     .then((response) => response.json())

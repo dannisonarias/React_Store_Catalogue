@@ -1,14 +1,14 @@
 /* eslint-disable max-len */
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Container, Card } from 'semantic-ui-react';
-import PropTypes from 'prop-types';
-import CategoryMenu from '../components/CategoryMenu';
-import LoadingIcon from '../components/Loader';
-import CoinCard from '../components/CoinCard';
-import getCoins from '../actions/index';
-import sort from '../modules/sort';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Container, Card } from "semantic-ui-react";
+import PropTypes from "prop-types";
+import CategoryMenu from "../components/CategoryMenu";
+import LoadingIcon from "../components/Loader";
+import CoinCard from "../components/CoinCard";
+import getCoins from "../actions/index";
+import sort from "../modules/sort";
 
 class CoinsContainer extends Component {
   constructor(props) {
@@ -28,10 +28,10 @@ class CoinsContainer extends Component {
     const { filter } = state;
     const { activeItem } = filter;
     if (coin.length <= 0) {
-      return (<LoadingIcon />);
+      return <LoadingIcon />;
     }
 
-    coin = ((category === 'Actively Traded') ? coin[0][0] : coin[0][1]);
+    coin = category === "Actively Traded" ? coin[0][0] : coin[0][1];
 
     const sortedCoins = sort(coin, activeItem);
     return (
@@ -57,16 +57,16 @@ class CoinsContainer extends Component {
 }
 
 CoinsContainer.propTypes = {
-  getCoins: PropTypes.string.isRequired,
-  coin: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  state: PropTypes.string.isRequired,
-  filter: PropTypes.string.isRequired,
+  // getCoins: PropTypes.string.isRequired,
+  // coin: PropTypes.string.isRequired,
+  // category: PropTypes.string.isRequired,
+  // state: PropTypes.string.isRequired,
+  // filter: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = state => ({ state });
+const mapStateToProps = (state) => ({ state });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   getCoins: bindActionCreators(getCoins, dispatch),
 });
 

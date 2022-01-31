@@ -1,13 +1,11 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import {
-  Button, Header, Image, Modal,
-} from 'semantic-ui-react';
-import { getCoinData } from '../actions/index';
-import SmallLoader from './smallLoader';
+import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Button, Header, Image, Modal } from "semantic-ui-react";
+import { getCoinData } from "../actions/index";
+import SmallLoader from "./smallLoader";
 
 class CoinModal extends React.Component {
   constructor(props) {
@@ -33,11 +31,11 @@ class CoinModal extends React.Component {
           onClose={() => this.setState({ open: false })}
           onOpen={() => this.setState({ open: true })}
           open={open}
-          trigger={(
+          trigger={
             <Button id={coinSymbol} onClick={this.handleClick}>
               Show Coin
             </Button>
-          )}
+          }
         >
           <SmallLoader />
         </Modal>
@@ -49,66 +47,53 @@ class CoinModal extends React.Component {
         onClose={() => this.setState({ open: false })}
         onOpen={() => this.setState({ open: true })}
         open={open}
-        trigger={(
+        trigger={
           <Button id={coinSymbol} onClick={this.handleClick}>
             Show Coin
           </Button>
-        )}
+        }
       >
-        <Modal.Header>
-          {coinData[0].name}
-        </Modal.Header>
+        <Modal.Header>{coinData.name}</Modal.Header>
         <Modal.Content image>
-          <Image size="medium" src={coinData[0].logo_url} wrapped />
+          <Image
+            size="medium"
+            src={`/assets/images/icons/${coinData.symbol.toLowerCase()}.svg`}
+            wrapped
+          />
           <Modal.Description>
             <Header>Coin information</Header>
             <ul>
               <li>
-                <strong>rank:</strong>
-                {' '}
-                {coinData[0].rank}
+                <strong>Rank:</strong> {coinData.rank}
               </li>
               <li>
-                <strong>Currency:</strong>
-                {' '}
-                {coinData[0].currency}
+                <strong>Currency:</strong> {coinData.name}
               </li>
               <li>
-                <strong>Symbol:</strong>
-                {' '}
-                {coinData[0].symbol}
+                <strong>Symbol:</strong> {coinData.symbol}
               </li>
               <li>
                 <strong>Price:</strong>
-                {' $'}
-                {coinData[0].price}
+                {" $"}
+                {coinData.price}
               </li>
               <li>
-                <strong>All Time High Price:</strong>
-                {' $'}
-                {coinData[0].high}
+                <strong>High Price 24h:</strong>
+                {" $"}
+                {coinData.high_24h}
               </li>
               <li>
-                <strong>circulating_supply:</strong>
-                {' '}
-                {coinData[0].circulating_supply}
+                <strong>Low Price 24h:</strong> {coinData.low_24h}
               </li>
               <li>
-                <strong>max_supply:</strong>
-                {' '}
-                {coinData[0].max_supply}
+                <strong>Remaining Supply:</strong> {coinData.remaining}
               </li>
               <li>
-                <strong>market_cap:</strong>
-                {' '}
-                {coinData[0].market_cap}
+                <strong>Total Volume 24h:</strong> {coinData.total_volume_24h}
               </li>
               <li>
-                <strong>transparent_market_cap:</strong>
-                {' '}
-                {coinData[0].transparent_market_cap}
+                <strong>Market Cap:</strong> {coinData.market_cap}
               </li>
-
             </ul>
           </Modal.Description>
         </Modal.Content>
@@ -122,9 +107,9 @@ class CoinModal extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ state });
+const mapStateToProps = (state) => ({ state });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   getCoinData: bindActionCreators(getCoinData, dispatch),
 });
 
