@@ -17,7 +17,7 @@ const Coin = (props) => {
   };
 
   const { coin } = props;
-  coin.logo_url = `/assets/images/icons/${coin.symbol.toLowerCase()}.svg`;
+  coin.logo_url = `./assets/images/icons/${coin.symbol.toLowerCase()}.svg`;
   const setDefaultLogo = (coin) =>
     // eslint-disable-next-line eqeqeq
     !coin.logo_url == "" ? coin.logo_url : "/assets/images/no-image.jpg";
