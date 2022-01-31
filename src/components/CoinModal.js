@@ -58,7 +58,7 @@ class CoinModal extends React.Component {
           <Image
             size="medium"
             rounded
-            src={`/assets/images/icons/${coinData.symbol.toLowerCase()}.svg`}
+            src={`./assets/images/icons/${coinData.symbol.toLowerCase()}.svg`}
             wrapped
           />
           <Modal.Description>
