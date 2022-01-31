@@ -57,11 +57,11 @@ class CoinsContainer extends Component {
 }
 
 CoinsContainer.propTypes = {
-  // getCoins: PropTypes.string.isRequired,
-  // coin: PropTypes.string.isRequired,
-  // category: PropTypes.string.isRequired,
-  // state: PropTypes.string.isRequired,
-  // filter: PropTypes.string.isRequired,
+  getCoins: PropTypes.string.isRequired,
+  coin: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  state: PropTypes.string.isRequired,
+  filter: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({ state });
