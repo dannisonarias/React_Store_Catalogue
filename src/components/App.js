@@ -1,11 +1,26 @@
 import React from 'react';
-import { Container, Header, List } from "semantic-ui-react";
-import Nav from './Nav'
+import { connect } from 'react-redux';
+import Nav from './Nav';
+import CoinsContainer from '../containers/Coins';
+import Footer from './Footer/Footer';
 
-const App = () => (
-  <div>
-    <Nav></Nav>
-  </div>
-);
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-export default App;
+  render() {
+    return (
+      <div>
+        <Nav />
+        <CoinsContainer />
+        <Footer />
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => ({ state });
+
+export default connect(mapStateToProps)(App);
